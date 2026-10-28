@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EPISODE — High-Quality Statement Streetwear &amp; Customization Atelier</title>
+  
+  <!-- Favicon / Meta -->
+  <meta name="description" content="Episode is an independent statement streetwear brand for creatives, alternative fashion enthusiasts, and trendsetters. Clothing as a canvas for self-expression without fast-fashion conformity.">
+  <meta name="theme-color" content="#0F0F11">
+
+  <!-- Google Fonts: Playfair Display, Cormorant Garamond, Space Mono, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Film Grain Canvas Overlay (35mm Emulsion Simulation) -->
+  <canvas id="film-grain-canvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient Cinematic Edge Vignette -->
+  <div class="vignette-overlay" aria-hidden="true"></div>
+
+  <!-- Custom Lens-Inspired Optical Cursor -->
+  <div id="lens-cursor" class="lens-cursor" aria-hidden="true">
+    <div class="lens-cursor-ring">
+      <div class="lens-cursor-dot"></div>
+      <span class="lens-cursor-label">PLAY</span>
+    </div>
+  </div>
+
+  <!-- Floating 35mm Contact Sheet Preview for Table Ledger Row Hover -->
+  <div id="ledger-float-preview" class="ledger-float-preview" aria-hidden="true">
+    <img src="assets/ep07_nocturne.svg" alt="Preview Still" />
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 1. HEADER & GLOBAL NAVIGATION                                             -->
+  <!-- ========================================================================= -->
+  <header class="site-header" role="banner">
+    <!-- Left: Spaced capital serif wordmark reading EPISODE -->
+    <div class="header-left">
+      <a href="#hero" class="brand-wordmark" aria-label="Episode Home">
+        EPISODE
+      </a>
+    </div>
+
+    <!-- Right: Minimalist Navigation links & Audio Mute/Unmute Toggle -->
+    <div class="header-right">
+      <nav class="site-nav" role="navigation" aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="#magazine-zine" class="nav-link">Editorial</a></li>
+          <li><a href="#lookbook" class="nav-link">Runway</a></li>
+          <li><a href="#curated-archive" class="nav-link">Archive</a></li>
+          <li><a href="#script-index-container" class="nav-link">Ledger</a></li>
+          <li><a href="#colophon" class="nav-link">Collective</a></li>
+        </ul>
+      </nav>
+
+      <!-- Video Sound Mute / Unmute Button -->
+      <button id="video-mute-toggle" class="header-sound-btn active" aria-label="Toggle Video Sound">
+        <span class="sound-wave-bars" aria-hidden="true">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </span>
+        <span id="video-mute-label">SOUND ON</span>
+      </button>
+
+      <!-- Shopping Bag / Cart Drawer Button -->
+      <button id="cart-toggle-btn" class="header-cart-btn" aria-label="Open Shopping Bag">
+        <svg class="cart-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="cart-label">BAG</span>
+        <span id="header-cart-count" class="cart-badge-count">0</span>
+      </button>
+
+      <!-- Launch Mobile App Experience Button -->
+      <a href="app.html" class="header-app-switch-btn" title="Launch EPISODE Mobile App" style="display:inline-flex; align-items:center; gap:6px; background:rgba(216,168,84,0.15); border:1px solid rgba(216,168,84,0.4); color:var(--accent-gold); padding:6px 12px; border-radius:999px; font-family:var(--font-mono); font-size:11px; text-decoration:none; font-weight:700; letter-spacing:0.06em; transition:all 0.2s ease;">
+        <span>📱 APP VIEW</span>
+      </a>
+
+      <!-- Instagram Link Badge -->
+      <a href="https://www.instagram.com/todayinepisode" target="_blank" rel="noopener noreferrer" class="ig-profile-badge" title="Visit @todayinepisode on Instagram">
+        <svg class="ig-icon-svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <span>@todayinepisode</span>
+      </a>
+
+      <button class="mobile-nav-toggle" aria-label="Open navigation menu">MENU</button>
+    </div>
+  </header>
+
+  <!-- ======================================================================= -->
+  <!-- 2. FULLSCREEN IMMERSIVE HERO ("EPISODE")                                -->
+  <!-- ======================================================================= -->
+  <section class="hero-fullscreen" id="hero" aria-label="Episode Premiere Screening">
+    <!-- Clean, full-bleed continuous loop video with sound -->
+    <video id="hero-video" class="hero-fullscreen-video" autoplay loop playsinline preload="auto">
+      <source src="assets/hero_reel.mp4" type="video/mp4">
+      <source src="assets/Video-52121_1080p_20261028145854-2.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+
+    <!-- Canvas element kept in DOM for procedural ambient background if video is toggled -->
+    <canvas id="hero-canvas" class="hero-fullscreen-canvas" style="display: none;"></canvas>
+
+    <!-- Video Error & Codec Diagnostic Overlay (Only shows if error occurs) -->
+    <div class="hero-video-error-banner" id="hero-video-error-banner">
+      <div class="video-error-card">
+        <div class="video-error-icon">⚠️</div>
+        <div class="video-error-title">UNSUPPORTED MEDIA / CODEC ERROR</div>
+        <div class="video-error-desc" id="video-error-desc"></div>
+        <div class="video-error-actions">
+          <button type="button" class="video-error-btn secondary" id="revert-video-btn">RESTORE STUDIO REEL</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Prompt (appears only if browser policy starts video muted) -->
+    <div class="floating-unmute-cue is-hidden" id="floating-unmute-cue" role="button" tabindex="0" aria-label="Unmute audio">
+      <span>🔇 TAP ANYWHERE TO UNMUTE AUDIO</span>
+    </div>
+
+    <!-- Minimal Scroll Indicator -->
+    <a href="#magazine-zine" class="hero-scroll-cue" aria-label="Scroll to explore editorial zine">
+      <span class="scroll-cue-text">EXPLORE</span>
+      <span class="scroll-cue-arrow">↓</span>
+    </a>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN EDITORIAL CANVAS WRAPPER                                             -->
+  <!-- ========================================================================= -->
+  <main class="main-wrapper" id="main-content">
+
+    <!-- ======================================================================= -->
+    <!-- HIGH-FASHION EDITORIAL MAGAZINE SPREAD (MIU MIU ARCHIVAL PATTERN)        -->
+    <!-- ======================================================================= -->
+    <div class="magazine-zine-container" id="magazine-zine">
+
+      <!-- SPREAD 0: HERO EDITORIAL COVER PLATE -->
+      <section class="zine-cover-plate" id="zine-cover" aria-label="Episode Editorial Cover">
+        <div class="zine-cover-bg-wrap">
+          <img src="assets/look08_scarlet_embroidered_jacket.jpg" alt="Episode Look 08: Scarlet Floral Embroidered Atelier Jacket" class="zine-cover-img" />
+          <div class="zine-cover-vignette"></div>
+        </div>
+
+        <!-- Giant Stylized Top Brand Wordmark -->
+        <div class="zine-giant-wordmark-top" aria-hidden="true">
+          <span>EPISODE</span>
+        </div>
+
+        <!-- Editorial Statement Overlay (100% English, Bespoke to Episode) -->
+        <div class="zine-cover-caption">
+          <h2 class="zine-cover-title">The Streetwear Canvas</h2>
+          <div class="zine-cover-subtitle">Engineered in New Delhi · Dispatched Worldwide</div>
+          <p class="zine-cover-desc">High-quality statement clothing engineered for creatives who refuse fast-fashion conformity</p>
+        </div>
+      </section>
+
+      <!-- SPREAD 1: 3-COLUMN EDITORIAL SPREAD -->
+      <section class="zine-spread-row zine-row-triptych" aria-label="Editorial Manifesto, Texture Study, and Statement Focus">
+        
+        <!-- Plate 1A: Editorial Manifesto Ledger (Light Parchment Paper) -->
+        <div class="zine-plate zine-plate-ledger">
+          <div class="zine-paper-inner">
+            <div class="zine-plate-header">
+              <span class="zine-plate-tag">EPISODE PROTOCOL // VOL. 01</span>
+              <span class="zine-plate-edition">NEW DELHI ATELIER</span>
+            </div>
+
+            <div class="zine-ledger-columns-grid">
+              <div class="zine-ledger-col">
+                <div class="zine-ledger-item">
+                  <div class="ledger-item-en">01 // Statement Silhouettes</div>
+                  <p class="ledger-item-p">Heavyweight natural textiles engineered to make a bold impression on their own—no excessive layering or cheap accessories required.</p>
+                </div>
+                <div class="zine-ledger-item">
+                  <div class="ledger-item-en">02 // Anti-Conformity Ethos</div>
+                  <p class="ledger-item-p">A deliberate departure from repetitive algorithmic trends, tailored specifically for Gen Z and millennial creatives treating style as defiance.</p>
+                </div>
+                <div class="zine-ledger-item">
+                  <div class="ledger-item-en">03 // The Living Canvas</div>
+                  <p class="ledger-item-p">Clothing designed as an evolving art piece. Modular utility panels and bespoke tailoring that turn every piece into personal narrative.</p>
+                </div>
+                <div class="zine-ledger-item">
+                  <div class="ledger-item-en">04 // Delhi Craftsmanship</div>
+                  <p class="ledger-item-p">Rooted in New Delhi's artisanal fabric heritage, merging North Indian botanical brocades with brutalist modern streetwear cuts.</p>
+                </div>
+              </div>
+
+              <div class="zine-ledger-col">
+                <div class="zine-ledger-item">
+                  <div class="ledger-item-en">05 // Uncompromising Weight</div>
+                  <p class="ledger-item-p">Dense 320 to 620 GSM natural loopback cotton, rich alpaca blends, and hand-loomed textiles built to outlast seasonal churn.</p>
+                </div>
+                <div class="zine-ledger-item">
+                  <div class="ledger-item-en">06 // Customization Lab</div>
+                  <p class="ledger-item-p">Designed with modular anchors and tactile swatches that invite personal intervention and co-creation.</p>
+                </div>
+                <div class="zine-ledger-item">
+                  <div class="ledger-item-en">07 // Individuality First</div>
+                  <p class="ledger-item-p">Built for those who view clothing as self-expression, without the hassle of trying to heavily accessorize generic brands to stand out.</p>
+                </div>
+                <div class="zine-ledger-item">
+                  <div class="ledger-item-en">08 // Worldwide Courier</div>
+                  <p class="ledger-item-p">Handcrafted in small batches at our New Delhi studio and delivered via tracked express door-to-door courier worldwide.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="zine-plate-footer">
+              <span class="zine-signature-logo">EPISODE · NEW DELHI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plate 1B: Asymmetrical Editorial Mood Collage (Featuring Look 03) -->
+        <div class="zine-plate zine-plate-collage">
+          <div class="zine-collage-grid-single">
+            <div class="collage-main-frame" onclick="openCuratorialNotes('ep-05')">
+              <img src="assets/look03_emerald_metallic.jpg" alt="Look 03: Liquid Emerald Noir Tunic Texture" />
+              <div class="collage-overlay-tag">
+                <span class="tag-num">LOOK 03 // LIQUID EMERALD</span>
+                <span class="tag-spec">360 GSM METALLIC PLEATED LAMÉ</span>
+              </div>
+            </div>
+            <div class="collage-bottom-stamp">
+              <span>EPISODE ATELIER // TEXTILE ARCHIVE // DELHI 110049</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plate 1C: Atmospheric Feature & Shoppable Capsule Spotlight (Featuring Look 04) -->
+        <div class="zine-plate zine-plate-party">
+          <div class="zine-party-content">
+            <div class="zine-party-header">
+              <div class="party-en-title">Engineered to Stand Boldly on Its Own</div>
+              <div class="party-en-sub">New Delhi Atelier · Limited Small-Batch Drops</div>
+              <div class="party-tag">[ WORLDWIDE TRACKED COURIER DISPATCH ]</div>
+            </div>
+
+            <!-- Single Featured Shoppable Product: Look 04 -->
+            <div class="party-single-product-wrap" data-product-id="ep-04">
+              <div class="party-prod-img-wrap" onclick="openCuratorialNotes('ep-04')">
+                <img src="assets/look04_monochrome_dahlia.jpg" alt="Look 04: Monochrome Dahlia Oversized Camp Shirt" />
+                <span class="party-price-pill">₹16,500 / €195</span>
+              </div>
+              <div class="party-prod-meta">
+                <div class="party-prod-name">MONOCHROME DAHLIA CAMP SHIRT</div>
+                <div class="party-prod-spec">240 GSM Drape Viscose · Hand-Drawn Floral Graphic · Relaxed Cuban Collar</div>
+                <div class="party-size-row">
+                  <div class="size-btn-group">
+                    <button type="button" class="size-btn" data-size="S">S</button>
+                    <button type="button" class="size-btn active" data-size="M">M</button>
+                    <button type="button" class="size-btn" data-size="L">L</button>
+                    <button type="button" class="size-btn" data-size="XL">XL</button>
+                  </div>
+                  <button type="button" class="party-add-btn" onclick="handleCardAddToCart('ep-04', this)">ADD TO BAG</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- SPREAD 2: NEW DELHI ATELIER DISPATCH & 3-FRAME RUNWAY FILMSTRIP -->
+      <section class="zine-spread-row zine-row-diptych" aria-label="Atelier Dispatch Envelope and Runway Filmstrip">
+        
+        <!-- Plate 2A: Deep Moss Green Atelier Invitation Spread -->
+        <div class="zine-plate zine-plate-moss">
+          <div class="moss-inner-card">
+            <div class="moss-card-masthead">
+              <span class="moss-card-serial">EPISODE ATELIER // DISPATCH PROTOCOL</span>
+              <span class="moss-brand-mark">NEW DELHI</span>
+            </div>
+
+            <div class="moss-card-envelope">
+              <div class="envelope-stamp">NEW DELHI · WORLDWIDE COURIER</div>
+              <div class="envelope-script">Self-Expression Without Conformity</div>
+              <div class="envelope-address">
+                ORIGIN: EPISODE ATELIER, NEW DELHI, INDIA<br>
+                DELIVERY: COMPLIMENTARY EXPRESS DOOR-TO-DOOR COURIER (INDIA &amp; WORLDWIDE)
+              </div>
+            </div>
+
+            <div class="moss-card-body">
+              <div class="moss-headline-lead">
+                An independent statement streetwear brand born in the creative undercurrents of New Delhi.
+              </div>
+              <p class="moss-en-lead">
+                We reject repetitive fast-fashion churn. Bridging centuries of Indian textile integrity—heavy botanical brocades, hand-guided embroidery, and dense raw linens—with brutalist modern streetwear silhouettes. Every piece is an evolving canvas for self-expression.
+              </p>
+            </div>
+
+            <div class="moss-card-action">
+              <button type="button" class="moss-dispatch-btn" onclick="openCuratorialNotes('ep-08')">
+                EXPLORE NEW DELHI ATELIER DISPATCH ↗
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plate 2B: 3-Frame Runway Filmstrip & Architectural Spec Ledger (Featuring Looks 01, 02, 06) -->
+        <div class="zine-plate zine-plate-runway">
+          <div class="runway-inner-spread">
+            
+            <!-- Horizontal 3-Portrait Filmstrip with Unique Garments -->
+            <div class="runway-filmstrip-row-3">
+              <!-- Frame 1: Look 01 -->
+              <div class="filmstrip-card" onclick="openCuratorialNotes('ep-07')">
+                <div class="filmstrip-img-box">
+                  <img src="assets/look01_ornate_wrap.jpg" alt="Look 01: Kinsale Ornate Jacquard Wrap Jacket" />
+                  <span class="filmstrip-price">₹28,500</span>
+                  <button type="button" class="filmstrip-quick-add" onclick="event.stopPropagation(); addToCart('ep-07', 'M', 1)">+ BAG</button>
+                </div>
+                <div class="filmstrip-label">LOOK 01 // ORNATE WRAP (540 GSM)</div>
+              </div>
+
+              <!-- Frame 2: Look 02 -->
+              <div class="filmstrip-card" onclick="openCuratorialNotes('ep-06')">
+                <div class="filmstrip-img-box">
+                  <img src="assets/look02_brocade_suit.jpg" alt="Look 02: Imperial Floral Brocade Tailored Suit" />
+                  <span class="filmstrip-price">₹35,000</span>
+                  <button type="button" class="filmstrip-quick-add" onclick="event.stopPropagation(); addToCart('ep-06', 'M', 1)">+ BAG</button>
+                </div>
+                <div class="filmstrip-label">LOOK 02 // BROCADE SUIT (520 GSM)</div>
+              </div>
+
+              <!-- Frame 3: Look 06 -->
+              <div class="filmstrip-card" onclick="openCuratorialNotes('ep-02')">
+                <div class="filmstrip-img-box">
+                  <img src="assets/look06_draped_hood.png" alt="Look 06: Deconstructed Paisley Draped Hood Halter" />
+                  <span class="filmstrip-price">₹19,500</span>
+                  <button type="button" class="filmstrip-quick-add" onclick="event.stopPropagation(); addToCart('ep-02', 'M', 1)">+ BAG</button>
+                </div>
+                <div class="filmstrip-label">LOOK 06 // DRAPED HOOD &amp; DENIM</div>
+              </div>
+            </div>
+
+            <!-- Architectural 3-Column Spec Ledger Table in Pure English -->
+            <div class="runway-spec-ledger">
+              <div class="ledger-row-line">
+                <div class="ledger-col-head">SUBVERTING FAST FASHION</div>
+                <div class="ledger-en-sub">Eliminating the exhausting ritual of over-accessorizing basic brands. Structured volume that commands presence on its own.</div>
+              </div>
+
+              <div class="ledger-row-line">
+                <div class="ledger-col-head">HERITAGE WEAVE &amp; UTILITY</div>
+                <div class="ledger-en-sub">Merging North Indian floral brocades and artisanal weaving techniques with brutalist street architecture.</div>
+              </div>
+
+              <div class="ledger-row-line">
+                <div class="ledger-col-head">CLOTHING AS YOUR BIOGRAPHY</div>
+                <div class="ledger-en-sub">Heavyweight natural fibers engineered to age with authority and accumulate the owner's personal milestones.</div>
+              </div>
+            </div>
+
+            <div class="runway-footer-row">
+              <span class="runway-wordmark">EPISODE · NEW DELHI</span>
+              <span class="runway-page-num">[ WORLDWIDE EXPRESS COURIER ]</span>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- SPREAD 3: THE GRAPHIC STUDIO & NOCTURNE FINALE WITH GIANT LOGO (Featuring Looks 07 and 05) -->
+      <section class="zine-spread-row zine-row-diptych" aria-label="Graphic Studio and Night Finale">
+        
+        <!-- Plate 3A: Underground Graphic Studio (Featuring Look 07 & Look 05) -->
+        <div class="zine-plate zine-plate-retrofuturism">
+          <div class="retro-inner-paper">
+            <div class="retro-eyebrow">NEW DELHI ATELIER STUDIO</div>
+            <h3 class="retro-title">Structural Defiance &amp; Graphic Utility</h3>
+
+            <div class="retro-grid-layout">
+              <!-- Featured Hot Seat Product Card: Look 07 with Photo -->
+              <div class="retro-featured-product" data-product-id="ep-01">
+                <div class="retro-prod-img-box" onclick="openCuratorialNotes('ep-01')">
+                  <img src="assets/look07_hotseat_tee.jpg" alt="Look 07: Hot Seat Graphic Boxy Tee" />
+                </div>
+                <div class="retro-prod-header">
+                  <span class="prod-badge">DROP 01 // ATELIER CAPSULE</span>
+                  <span class="prod-price">₹10,500 / €125</span>
+                </div>
+                <div class="retro-prod-name">“HOT SEAT” HEAVYWEIGHT BOXY TEE</div>
+                <p class="retro-prod-desc">320 GSM ring-spun cotton jersey with screen-printed comic artwork 'The only personal space I've got' and tactile red felt lettering across the lower back hem.</p>
+                <div class="retro-prod-sizes">
+                  <div class="size-btn-group">
+                    <button type="button" class="size-btn" data-size="S">S</button>
+                    <button type="button" class="size-btn active" data-size="M">M</button>
+                    <button type="button" class="size-btn" data-size="L">L</button>
+                    <button type="button" class="size-btn" data-size="XL">XL</button>
+                  </div>
+                  <button type="button" class="retro-add-btn" onclick="handleCardAddToCart('ep-01', this)">ADD TO BAG</button>
+                </div>
+              </div>
+
+              <!-- Secondary Studio Still: Look 05 -->
+              <div class="retro-stills-col">
+                <div class="retro-still-box" onclick="openCuratorialNotes('ep-03')">
+                  <img src="assets/look05_sage_overshirt.jpg" alt="Look 05: Sage Mineral Linen Overshirt & Plaid Pant" />
+                  <span class="still-caption">LOOK 05 // SAGE SLUB LINEN (380 GSM)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="retro-footer">
+              <span class="zine-signature-logo">EPISODE // CRAFTED IN NEW DELHI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plate 3B: Dramatic Night Editorial Finale with Giant Wordmark -->
+        <div class="zine-plate zine-plate-night">
+          <div class="night-content-overlay-clean">
+            <div class="night-quote-block">
+              <span class="night-manifesto-badge">THE EPISODE PROTOCOL</span>
+              <h3 class="night-en-title">Clothing is not disposable merchandise. It is a living canvas for self-expression.</h3>
+              <p class="night-desc">
+                Designed and handcrafted in our New Delhi studio. Delivered worldwide via express courier. Built for creatives who treat personal style as an act of defiance.
+              </p>
+              <div class="night-actions-row">
+                <button type="button" class="night-pill-btn" onclick="openCuratorialNotes('ep-08')">
+                  EXPLORE ARCHIVE SPECIFICATIONS ↗
+                </button>
+                <button type="button" class="night-cart-btn" onclick="openCartDrawer()">
+                  VIEW SHOPPING BAG
+                </button>
+              </div>
+            </div>
+
+            <!-- Giant Wordmark Spanning Bottom of Spread -->
+            <div class="night-giant-wordmark-bottom" aria-hidden="true">
+              <span>EPISODE</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <section class="archive-section" id="curated-archive" aria-label="Curated Episode Drops Archive">
+      <div class="archive-header">
+        <div class="archive-header-left">
+          <span class="archive-eyebrow">EPISODIC DROPS &amp; STATEMENT SILHOUETTES</span>
+          <h2 class="archive-title">Curated Collection Archive</h2>
+        </div>
+
+        <div class="archive-controls">
+          <!-- Category Filter Pills -->
+          <ul class="filter-pills-list" role="tablist">
+            <li><button class="filter-btn active" data-category="ALL" role="tab" aria-selected="true">ALL <span class="count-tag">(8)</span></button></li>
+            <li><button class="filter-btn" data-category="STATEMENT PIECE" role="tab" aria-selected="false">STATEMENT PIECES <span class="count-tag">(4)</span></button></li>
+            <li><button class="filter-btn" data-category="CUSTOM CANVAS" role="tab" aria-selected="false">CUSTOM CANVAS <span class="count-tag">(3)</span></button></li>
+            <li><button class="filter-btn" data-category="ATELIER CAPSULE" role="tab" aria-selected="false">ATELIER CAPSULES <span class="count-tag">(1)</span></button></li>
+          </ul>
+
+          <!-- View Switcher (The Grid vs Script Ledger) -->
+          <div class="view-mode-toggle" role="group" aria-label="View Layout">
+            <button class="view-btn active" data-mode="grid" aria-label="Grid view">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              <span>GRID</span>
+            </button>
+            <button class="view-btn" data-mode="ledger" aria-label="Script ledger table view">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2"/><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2"/><line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2"/></svg>
+              <span>LEDGER</span>
+            </button>
+          </div>
+
+          <!-- Search Filter -->
+          <div class="search-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/><line x1="16" y1="16" x2="22" y2="22" stroke="currentColor" stroke-width="2"/></svg>
+            <input type="text" id="search-episodes" class="search-input" placeholder="SEARCH SILHOUETTE / TEXTILE / DROP..." aria-label="Search collection drops">
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW A: Multi-Column 16:9 Thumbnail Grid -->
+      <div class="episodes-grid" id="episodes-grid" role="region" aria-label="Episodes Grid View">
+        <!-- Dynamically rendered by app.js -->
+      </div>
+
+      <!-- VIEW B: Directory / Script Index (Alternative Horizontal Ledger View) -->
+      <div class="script-index-container" id="script-index-container" role="region" aria-label="Episodes Ledger Table View">
+        <table class="script-ledger-table">
+          <thead>
+            <tr>
+              <th>DROP #</th>
+              <th>COLLECTION</th>
+              <th>SILHOUETTE &amp; PIECE</th>
+              <th>FOCUS PILLAR</th>
+              <th>TEXTILE / WEIGHT</th>
+              <th>CUSTOMIZATION</th>
+              <th>ATELIER / CURATOR</th>
+              <th>RELEASE</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody id="script-ledger-body">
+            <!-- Dynamically populated by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- 4. FOOTER & DISPATCH SIGN-UP                                              -->
+  <!-- ========================================================================= -->
+  <footer class="site-footer" id="colophon" role="contentinfo">
+    <div class="footer-inner">
+      <!-- Top Newsletter Dispatch Section -->
+      <div class="footer-top-dispatch">
+        <div>
+          <h3 class="dispatch-statement-title">Join the Episode Creative Collective</h3>
+          <p class="dispatch-statement-p">
+            Receive private capsule release notifications, atelier customization appointments, and studio process dispatches 24 hours prior to public drop. Strictly high-quality statement utility. No marketing noise.
+          </p>
+        </div>
+
+        <div class="dispatch-signup-box">
+          <form class="dispatch-form" id="dispatch-form" aria-label="Newsletter sign up">
+            <input type="email" class="dispatch-input" placeholder="CREATIVE@DOMAIN.COM" required aria-label="Email address">
+            <button type="submit" class="dispatch-submit-btn">Request Access</button>
+          </form>
+          <div class="dispatch-notice">
+            [ SMALL-BATCH PRODUCTION · NO CONFORMITY · UNSUBSCRIBE ANYTIME ]
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Directory Grid -->
+      <div class="footer-bottom-grid">
+        <div>
+          <div class="brand-wordmark" style="font-size: 16px; margin-bottom: 12px;">
+            EPISODE
+          </div>
+          <p style="font-size: 13px; color: var(--text-subtle); line-height: 1.6; max-width: 320px;">
+            An independent statement streetwear brand engineering high-density garments as canvases for self-expression. Built for creatives who reject fast-fashion uniformity.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">COLLECTIONS</div>
+          <ul class="footer-col-links">
+            <li><a href="#hero">Current Premiere Reel</a></li>
+            <li><a href="#curated-archive">Statement Pieces</a></li>
+            <li><a href="#curated-archive">Custom Canvas Lab</a></li>
+            <li><a href="#curated-archive">Atelier Capsules</a></li>
+            <li><a href="#script-index-container">Complete Drop Ledger</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">ATELIER &amp; CRAFT</div>
+          <ul class="footer-col-links">
+            <li><a href="javascript:void(0)" onclick="openCuratorialNotes('ep-07')">Garment as Canvas</a></li>
+            <li><a href="javascript:void(0)" onclick="openCuratorialNotes('ep-06')">Textile Density (500+ GSM)</a></li>
+            <li><a href="javascript:void(0)">Bespoke Customization Studio</a></li>
+            <li><a href="javascript:void(0)">Zero Fast-Fashion Protocol</a></li>
+            <li><a href="javascript:void(0)">Archival Garment Care</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">COMMUNITY &amp; ATELIER</div>
+          <ul class="footer-col-links">
+            <li><a href="https://instagram.com/todayinepisode" target="_blank" rel="noopener">Instagram Atelier ↗</a></li>
+            <li><a href="javascript:void(0)">New Delhi Studio Sessions ↗</a></li>
+            <li><a href="javascript:void(0)">Shahpur Jat Design Hub ↗</a></li>
+            <li><a href="javascript:void(0)">Community Stories Diary ↗</a></li>
+            <li><a href="javascript:void(0)">Worldwide Courier Dispatch ↗</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Legal & Technical Disclaimer Bar -->
+      <div class="footer-legal-bar">
+        <div>
+          © 2026 TODAY IN EPISODE MEDIA LAB. ALL RIGHTS RESERVED.
+        </div>
+        <div>
+          ENCODED IN 24.00 FPS · 35MM OPTICAL SOUNDTRACK COMPLIANT
+        </div>
+        <div>
+          KEYBOARD SHORTCUTS: [SPACE: PLAY/PAUSE] · [M: AMBIENT SOUND] · [F: FULLSCREEN] · [ESC: CLOSE]
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- 5. CURATORIAL DISPATCH & PRODUCTION NOTES DRAWER (Slide-over Modal)       -->
+  <!-- ========================================================================= -->
+  <div class="curatorial-modal-backdrop" id="curatorial-modal" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+    <div class="curatorial-drawer">
+      <button class="drawer-close-btn" id="curatorial-drawer-close" aria-label="Close curatorial notes">✕</button>
+
+      <!-- Masthead -->
+      <div class="drawer-masthead">
+        <span class="drawer-masthead-title">TODAY IN EPISODE // CURATORIAL DISPATCH</span>
+        <span class="drawer-issue-label" id="drawer-issue">ISSUE 04 · DISPATCH</span>
+      </div>
+
+      <!-- Article Header -->
+      <div class="drawer-article-header">
+        <h2 class="drawer-article-title" id="drawer-title">Nocturne in 35mm</h2>
+        <div class="drawer-article-subtitle" id="drawer-subtitle">A Study in Cobalt, Rain, and Neon Decay</div>
+
+        <div class="drawer-byline-strip">
+          <span id="drawer-director">DIR. CLARA VANCE</span>
+          <span>·</span>
+          <span id="drawer-runtime">RUNTIME 04:35</span>
+          <span>·</span>
+          <span id="drawer-stock">KODAK VISION3 500T</span>
+          <span>·</span>
+          <span id="drawer-aspect">2.39:1 SCOPE</span>
+        </div>
+      </div>
+
+      <!-- Two-Column High-Fashion Editorial Body -->
+      <div class="drawer-editorial-grid">
+        <p class="drop-cap" id="drawer-p1">
+          In an era characterized by algorithmic saturation and sterile hyper-resolution, 'Nocturne in 35mm' chooses physical vulnerability. The film was intentionally exposed on a discontinued batch of Kodak Vision3 500T emulsion that had expired eleven years prior in a basement in Saint-Denis. The resulting imagery breathes with erratic halide clumping, blooming halogen streetlights, and an oceanic cobalt palette that cannot be reverse-engineered in post-production.
+        </p>
+
+        <p id="drawer-p2">
+          Director Clara Vance operates less as a conventional dramatist and more as an acoustic cartographer. Across four minutes and thirty-five seconds, there are fewer than forty spoken words. The emotional architecture of the piece is instead sustained through the physical contact between tires and wet asphalt, the rhythmic flick of an analog windshield wiper, and an original tape drone composed by Vance on a modified Revox B77 reel-to-reel.
+        </p>
+
+        <blockquote class="drawer-pullquote" id="drawer-quote">
+          “Film emulsion remembers the physical atmospheric pressure of the night in a way digital sensors simply cannot calculate.” — Clara Vance
+        </blockquote>
+      </div>
+
+      <!-- 35mm Contact Sheet Frame Stills -->
+      <div class="drawer-contact-sheet">
+        <div class="contact-sheet-header">
+          <span>ATELIER PROOFS // GARMENT DETAILS &amp; SILHOUETTE FRAMES</span>
+          <span>NEW DELHI ATELIER ARCHIVE // WORLDWIDE COURIER</span>
+        </div>
+        <div class="contact-sheet-strip" id="drawer-stills-strip">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Technical Production Ledger -->
+      <div class="drawer-tech-specs">
+        <div class="tech-specs-title">GARMENT &amp; ATELIER SPECIFICATIONS</div>
+        <div class="tech-specs-grid">
+          <div class="tech-spec-item">
+            <span class="tech-spec-label">CUSTOMIZATION CANVAS</span>
+            <span class="tech-spec-value" id="spec-camera">Heavyweight Cotton &amp; Silk Damask</span>
+          </div>
+          <div class="tech-spec-item">
+            <span class="tech-spec-label">SILHOUETTE &amp; CUT</span>
+            <span class="tech-spec-value" id="spec-lens">Architectural Oversized Streetwear</span>
+          </div>
+          <div class="tech-spec-item">
+            <span class="tech-spec-label">TEXTILE &amp; WEIGHT</span>
+            <span class="tech-spec-value" id="spec-stock">Heritage North Indian Handloom</span>
+          </div>
+          <div class="tech-spec-item">
+            <span class="tech-spec-label">ATELIER LOCATION</span>
+            <span class="tech-spec-value" id="spec-location">New Delhi Atelier (Shahpur Jat)</span>
+          </div>
+          <div class="tech-spec-item">
+            <span class="tech-spec-label">WORLDWIDE SHIPPING</span>
+            <span class="tech-spec-value" id="spec-audio">Express Courier Door-to-Door</span>
+          </div>
+          <div class="tech-spec-item">
+            <span class="tech-spec-label">RELEASE DATE</span>
+            <span class="tech-spec-value" id="spec-date">October 14, 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Direct Atelier Acquisition Bar -->
+      <div class="drawer-commerce-panel" id="drawer-commerce-panel">
+        <div class="drawer-commerce-meta">
+          <div class="drawer-price-wrap">
+            <span class="drawer-commerce-label">ATELIER DIRECT ARCHIVE</span>
+            <span class="drawer-commerce-price" id="drawer-commerce-price">€340</span>
+          </div>
+          <span class="drawer-stock-badge">LIMITED 45 UNITS CRAFTED</span>
+        </div>
+
+        <div class="drawer-commerce-controls">
+          <div class="drawer-size-selector">
+            <span class="drawer-size-label">SIZE:</span>
+            <div class="drawer-size-pills" id="drawer-size-pills">
+              <button type="button" class="size-pill" data-size="S">S</button>
+              <button type="button" class="size-pill active" data-size="M">M</button>
+              <button type="button" class="size-pill" data-size="L">L</button>
+              <button type="button" class="size-pill" data-size="XL">XL</button>
+            </div>
+          </div>
+
+          <button type="button" class="drawer-buy-btn" id="drawer-buy-btn" onclick="handleDrawerAddToCart()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span id="drawer-buy-label">ADD TO BAG</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Drawer footer actions -->
+      <div style="display: flex; gap: 16px; margin-top: 24px;">
+        <button class="btn-primary-screen" onclick="openScreeningRoom(window.tieState.currentEpisodeForNotes.id)">
+          <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21" /></svg>
+          <span>Watch Lookbook Film</span>
+        </button>
+        <button class="btn-outline-notes" onclick="window.print()">
+          <span>Print Spec Sheet 🖨</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 6. FULL CINEMA SCREENING ROOM MODAL                                       -->
+  <!-- ========================================================================= -->
+  <div class="screening-room-modal" id="screening-room-modal" role="dialog" aria-modal="true" aria-label="Cinematic Screening Room">
+    <!-- Topbar -->
+    <div class="screening-room-topbar">
+      <div class="screening-room-info">
+        <span class="rec-dot"></span>
+        <span id="screening-title-display">EPISODE 07 // "NOCTURNE IN 35MM"</span>
+        <span class="sep">·</span>
+        <span id="screening-director-display">DIR. CLARA VANCE</span>
+      </div>
+
+      <button class="screening-room-close" id="screening-room-close-btn" aria-label="Exit Lookbook Room">
+        <span>EXIT LOOKBOOK [ESC]</span>
+        <span>✕</span>
+      </button>
+    </div>
+
+    <!-- Viewport -->
+    <div class="screening-viewport">
+      <canvas id="screening-canvas"></canvas>
+
+      <!-- Subtitles Display -->
+      <div class="screening-subtitles-box" id="screening-subtitles" aria-live="polite">
+        The rain had washed away the oil from the avenues.
+      </div>
+    </div>
+
+    <!-- Playback Controls Bar -->
+    <div class="screening-controls-bar">
+      <!-- Timecode Scrubber Row -->
+      <div class="screening-scrubber-row">
+        <span class="screening-timecode-readout" id="screening-tc">00:01:14:08 / 00:04:35:00</span>
+        
+        <div class="screening-track" id="screening-track">
+          <div class="screening-track-fill" id="screening-track-fill"></div>
+        </div>
+
+        <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);">24.00 FPS</span>
+      </div>
+
+      <!-- Button Controls Row -->
+      <div class="screening-buttons-row">
+        <div class="playback-controls-group">
+          <!-- Step back frame -->
+          <button class="control-btn" id="screening-step-back" title="Step Back 1 Frame (1/24s)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/></svg>
+          </button>
+
+          <!-- Play/Pause toggle -->
+          <button class="control-btn" id="screening-play-toggle" title="Play / Pause [Space]">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </button>
+
+          <!-- Step forward frame -->
+          <button class="control-btn" id="screening-step-forward" title="Step Forward 1 Frame (1/24s)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg>
+          </button>
+        </div>
+
+        <!-- Audio & Subtitles selector -->
+        <div class="screening-options-group">
+          <div>
+            <label for="screening-subtitles-select">SUBTITLES: </label>
+            <select id="screening-subtitles-select" class="subtitles-select">
+              <option value="en">ENGLISH [ORIGINAL]</option>
+              <option value="off">OFF</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="screening-audio-select">AUDIO: </label>
+            <select id="screening-audio-select" class="audio-track-select">
+              <option value="master">STEREO MASTER 24-BIT</option>
+              <option value="commentary">DIRECTOR'S COMMENTARY</option>
+              <option value="mono">ANALOG 1/4" MONO TAPE</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 7. TOAST NOTIFICATION FOR DISPATCH RECEIPT                                -->
+  <!-- ========================================================================= -->
+  <div class="toast-receipt" id="toast-receipt" role="alert" aria-live="assertive">
+    <div style="color: var(--accent-gold); font-size: 20px;">✓</div>
+    <div>
+      <div class="toast-serial" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-gold);">[ DISPATCH PASS #TIE-7429 ]</div>
+      <div class="toast-desc" style="font-size: 12px; color: var(--text-ivory);">Confirmation transmitted. Next episodic release registered.</div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 8. VIDEO SOURCE SELECTION & CUSTOM URL MODAL                              -->
+  <!-- ========================================================================= -->
+  <div class="video-source-modal-backdrop" id="video-source-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+    <div class="video-source-modal">
+      <button class="video-modal-close-btn" id="video-modal-close-btn" aria-label="Close video source selector">✕</button>
+
+      <h3 class="video-modal-title" id="video-modal-title">Upload or Select Video Reel</h3>
+      <p class="video-modal-subtitle">
+        Upload any local video from your Mac (.mp4, .mov, .webm), paste an Instagram Reel or direct link, or choose from our studio session archive.
+      </p>
+
+      <!-- Direct Local File Dropzone / Picker -->
+      <div class="video-dropzone" id="video-dropzone" role="button" tabindex="0" aria-label="Upload video file from computer">
+        <input type="file" id="local-video-input" accept="video/mp4,video/webm,video/quicktime,video/mov,video/ogg" style="display: none;">
+        <div class="video-dropzone-icon">📼</div>
+        <div class="video-dropzone-content">
+          <div class="video-dropzone-title">UPLOAD FROM YOUR MAC (.MP4 / .MOV / .WEBM)</div>
+          <div class="video-dropzone-desc">Click to browse files or drag &amp; drop video here</div>
+        </div>
+        <button type="button" class="video-dropzone-btn" id="browse-video-btn">BROWSE</button>
+      </div>
+
+      <div class="video-modal-tip">
+        💡 <strong>Note on "Unsupported Media":</strong> Web browsers strictly require the <strong>H.264 (AVC)</strong> video codec. If your .mp4 was recorded on iPhone or downloaded in <strong>HEVC / H.265</strong>, right-click it in Mac Finder ➔ <em>Quick Actions</em> ➔ <em>Encode Selected Video Files</em> (choose 1080p).
+      </div>
+
+      <div class="video-modal-divider">
+        <span>OR PASTE DIRECT VIDEO URL</span>
+      </div>
+
+      <form class="video-url-form" id="video-url-form">
+        <input type="url" id="custom-video-input" class="video-url-input" placeholder="PASTE MP4 / WEBM / VIDEO URL...">
+        <button type="submit" class="video-url-load-btn">LOAD URL</button>
+      </form>
+
+      <div style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-gold); letter-spacing: 1.5px; margin-bottom: 12px; text-transform: uppercase;">
+        OR SELECT CURATED STUDIO REEL:
+      </div>
+
+      <div class="video-presets-list">
+        <button type="button" class="video-preset-btn" data-url="assets/hero_reel.mp4" data-title="Today in Episode: Premier Reel" data-curator="Today in Episode (New Delhi / NY)" data-aspect="16:9">
+          <span>01 // Today in Episode · Official Premier Reel</span>
+          <span class="video-preset-meta">16:9 · 1080P MASTER</span>
+        </button>
+
+        <button type="button" class="video-preset-btn" data-url="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4" data-title="Vestiges of Haute Couture" data-curator="Hélène de Saint-Germain" data-aspect="4:3">
+          <span>02 // Vestiges of Haute Couture · New Delhiian Atelier</span>
+          <span class="video-preset-meta">4:3 · 35MM EKTACHROME</span>
+        </button>
+
+        <button type="button" class="video-preset-btn" data-url="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" data-title="Chroma Drift: Solstice" data-curator="Marcela Rios & Yves Delacroix" data-aspect="2.39">
+          <span>03 // Chroma Drift · Infrared Atacama Horizon</span>
+          <span class="video-preset-meta">2.39:1 · 65MM SENSOR</span>
+        </button>
+
+        <button type="button" class="video-preset-btn" data-url="canvas-generative" data-title="Nocturne in 35mm" data-curator="Clara Vance" data-aspect="2.39">
+          <span>04 // Nocturne in 35mm · Shinjuku Rain Noir</span>
+          <span class="video-preset-meta">2.39:1 · GENERATIVE CANVAS</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 9. SHOPPING BAG SLIDE-OVER DRAWER                                         -->
+  <!-- ========================================================================= -->
+  <div class="cart-drawer-backdrop" id="cart-drawer-backdrop" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title">
+    <div class="cart-drawer" id="cart-drawer">
+      <!-- Drawer Header -->
+      <div class="cart-drawer-header">
+        <div class="cart-drawer-title-group">
+          <h2 class="cart-drawer-title" id="cart-drawer-title">ATELIER BAG</h2>
+          <span class="cart-drawer-count" id="cart-drawer-count">[ 0 PIECES ]</span>
+        </div>
+        <button class="cart-drawer-close" id="cart-drawer-close" aria-label="Close cart drawer">✕</button>
+      </div>
+
+      <!-- Perks Notice -->
+      <div class="cart-shipping-perk">
+        <div class="perk-label">
+          <span>⚡ COMPLIMENTARY COURIER (INDIA &amp; WORLDWIDE)</span>
+          <span class="perk-status">INCLUDED</span>
+        </div>
+        <div class="perk-bar"><div class="perk-bar-fill" style="width: 100%;"></div></div>
+      </div>
+
+      <!-- Scrollable Cart Line Items -->
+      <div class="cart-items-list" id="cart-items-list">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Cart Drawer Footer / Summary -->
+      <div class="cart-drawer-footer" id="cart-drawer-footer">
+        <div class="cart-summary-line">
+          <span>CURATORIAL ARCHIVE SUBTOTAL</span>
+          <span class="cart-subtotal-val" id="cart-subtotal-val">€0</span>
+        </div>
+        <div class="cart-summary-line subtle">
+          <span>ARCHIVAL PACKAGING &amp; DUST COVER</span>
+          <span class="perk-highlight">COMPLIMENTARY</span>
+        </div>
+        <div class="cart-summary-line subtle">
+          <span>35MM ANALOG PROOF PRINT INSERT</span>
+          <span class="perk-highlight">INCLUDED</span>
+        </div>
+
+        <div class="cart-divider"></div>
+
+        <div class="cart-total-line">
+          <span>TOTAL ACQUISITION</span>
+          <span class="cart-total-val" id="cart-total-val">€0</span>
+        </div>
+
+        <button type="button" class="cart-checkout-btn" id="cart-checkout-btn">
+          <span>PROCEED TO CHECKOUT</span>
+          <span class="checkout-btn-arrow">➔</span>
+        </button>
+
+        <p class="cart-secure-note">
+          🔒 SECURE ATELIER PROTOCOL · WORLDWIDE TRACKED DISPATCH · 14-DAY RETURNS
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 10. CHECKOUT & ORDER CONFIRMATION MODAL                                    -->
+  <!-- ========================================================================= -->
+  <div class="checkout-modal-backdrop" id="checkout-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="checkout-modal-title">
+    <div class="checkout-modal" id="checkout-modal">
+      <button class="checkout-modal-close" id="checkout-modal-close" aria-label="Close checkout">✕</button>
+
+      <!-- Step 1: Atelier Checkout Form -->
+      <div class="checkout-step-form" id="checkout-step-form">
+        <div class="checkout-masthead">
+          <span class="checkout-serial">EPISODE ATELIER // DISPATCH ORDER</span>
+          <h3 class="checkout-title" id="checkout-modal-title">Complete Your Acquisition</h3>
+          <p class="checkout-subtitle">Each piece is individually inspected, hand-numbered, and packed at our New Delhi studio.</p>
+        </div>
+
+        <form class="checkout-form" id="checkout-order-form">
+          <div class="form-section-title">01 // RECIPIENT INFORMATION</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkout-name">FULL NAME</label>
+              <input type="text" id="checkout-name" required placeholder="Aayushi..." class="form-input">
+            </div>
+            <div class="form-group">
+              <label for="checkout-email">EMAIL ADDRESS</label>
+              <input type="email" id="checkout-email" required placeholder="creative@domain.com" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-section-title" style="margin-top: 18px;">02 // ATELIER DISPATCH DESTINATION</div>
+          <div class="form-group">
+            <label for="checkout-address">SHIPPING ADDRESS</label>
+            <input type="text" id="checkout-address" required placeholder="Street address, apartment, studio..." class="form-input">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkout-city">CITY</label>
+              <input type="text" id="checkout-city" required placeholder="New Delhi, Mumbai, Bengaluru, London, New York..." class="form-input">
+            </div>
+            <div class="form-group">
+              <label for="checkout-country">COUNTRY</label>
+              <select id="checkout-country" class="form-select">
+                <option value="IN" selected>India (Domestic Express Courier - Delhi Hub)</option>
+                <option value="US">United States (Worldwide Express Courier)</option>
+                <option value="GB">United Kingdom (Worldwide Express Courier)</option>
+                <option value="EU">European Union (Worldwide Express Courier)</option>
+                <option value="AE">UAE &amp; Middle East (Worldwide Express Courier)</option>
+                <option value="CA">Canada (Worldwide Express Courier)</option>
+                <option value="AU">Australia &amp; NZ (Worldwide Express Courier)</option>
+                <option value="SG">Singapore &amp; Asia (Worldwide Express Courier)</option>
+                <option value="GLOBAL">Rest of World (Worldwide Express Courier)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-section-title" style="margin-top: 18px;">03 // PAYMENT PROTOCOL</div>
+          <div class="payment-methods-grid">
+            <label class="payment-method-card active">
+              <input type="radio" name="payment-method" value="apple-pay" checked>
+              <div class="payment-info">
+                <span class="payment-name">Apple Pay / Digital Wallet</span>
+                <span class="payment-sub">Instant biometric authentication</span>
+              </div>
+              <span class="payment-icon">Pay</span>
+            </label>
+
+            <label class="payment-method-card">
+              <input type="radio" name="payment-method" value="card">
+              <div class="payment-info">
+                <span class="payment-name">Credit Card / Debit</span>
+                <span class="payment-sub">Encrypted 256-bit atelier protocol</span>
+              </div>
+              <span class="payment-icon">💳</span>
+            </label>
+          </div>
+
+          <!-- Checkout Order Mini Summary -->
+          <div class="checkout-order-summary-box">
+            <div class="summary-line">
+              <span>Items Total (<span id="checkout-summary-count">0</span> items)</span>
+              <span id="checkout-summary-subtotal">€0</span>
+            </div>
+            <div class="summary-line">
+              <span>Archival Delivery</span>
+              <span class="perk-highlight">FREE</span>
+            </div>
+            <div class="summary-line total">
+              <span>Total Amount Due</span>
+              <span id="checkout-summary-total">€0</span>
+            </div>
+          </div>
+
+          <button type="submit" class="checkout-submit-btn" id="checkout-submit-btn">
+            CONFIRM ORDER &amp; SECURE PIECES
+          </button>
+        </form>
+      </div>
+
+      <!-- Step 2: Order Confirmation Receipt -->
+      <div class="checkout-step-success is-hidden" id="checkout-step-success">
+        <div class="success-icon-badge">✓</div>
+        <div class="success-tag">EPISODE ATELIER DISPATCH CONFIRMED</div>
+        <h3 class="success-order-id" id="success-order-id">ORDER #EP-2026-8942</h3>
+        <p class="success-message">
+          Your order has been recorded into the Episode Atelier ledger. A confirmation dispatch and tracking code will be sent to <strong id="success-customer-email">your email</strong>.
+        </p>
+
+        <div class="success-specs-card">
+          <div class="spec-row">
+            <span>PACKAGING:</span>
+            <span>Archival Organic Canvas Dust Bag + 35mm Studio Proof</span>
+          </div>
+          <div class="spec-row">
+            <span>DISPATCH STATUS:</span>
+            <span class="status-ready">QUEUED FOR ATELIER PREPARATION</span>
+          </div>
+          <div class="spec-row">
+            <span>ESTIMATED DELIVERY:</span>
+            <span>2–3 BUSINESS DAYS (EXPRESS COURIER)</span>
+          </div>
+        </div>
+
+        <button type="button" class="success-close-btn" id="success-close-btn">
+          CONTINUE BROWSING EPISODE
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

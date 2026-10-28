@@ -1,0 +1,18 @@
+{
+  "name": "EPISODE Atelier",
+  "short_name": "EPISODE",
+  "description": "High-Quality Statement Streetwear & Customization Canvas. Handcrafted in New Delhi, Shipped Worldwide.",
+  "start_url": "app.html",
+  "display": "standalone",
+  "background_color": "#0D0D0E",
+  "theme_color": "#0D0D0E",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/ep07_nocturne.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
